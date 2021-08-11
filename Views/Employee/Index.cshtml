@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!---------DATATABLE--------->
+
+<table id="EmployeeList" class="display" width="100%">
+    <thead>
+        <tr>
+            <th id="EmployeeId">Id</th>
+            <th id="Name">Name</th>
+            <th id="Age">Age</th>
+            <th id="Email">Email</th>
+            <th id="PhoneNumber">Phone Number</th>
+        </tr>
+    </thead>
+</table>
+
+<!---------ADD EMPLOYEE--------->
+
+<div class="modal fade" id="addEmployee" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Add Employee</h4>
+                <button type="button" class="btn-close" target="#addEmployee" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="display:none">
+                    <label>Id: </label>
+                    <input type="text" name="EmployeeId" id="EmployeeId" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Name: </label>
+                    <input type="text" name="Name" id="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Age:</label>
+                    <input type="number" name="Age" id="Age" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" name="Email" id="Email" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Phone Number:</label>
+                    <input type="text" name="PhoneNumber" id="PhoneNumber" class="form-control" />
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-toolbar" target="#addEmployee" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-success" id="edit" data-dismiss="modal" onclick="addEmployee()">Add</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!---------EDIT EMPLOYEE--------->
+
+<div class="modal fade" id="editEmployee" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Edit Employee</h4>
+                <button type="button" class="btn-close" target="#editEmployee" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="display:none">
+                    <label>Id:</label>
+                    <input type="text" name="EmployeeId" id="EmployeeId" class="form-control"  readonly="readonly" />
+                </div>
+                <div class="form-group">
+                    <label>Name: </label>
+                    <input type="text" name="Name" id="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Age:</label>
+                    <input type="number" name="Age" id="Age" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" name="Email" id="Email" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Phone Number:</label>
+                    <input type="text" name="PhoneNumber" id="PhoneNumber" class="form-control" />
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-toolbar" target="#editEmployee" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" id="edit" data-dismiss="modal" onclick="updateEmployee()">Edit</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!---------DELETE EMPLOYEE--------->
+
+<div id="dialog" class="modal fade" role="dialog" style="display:none">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete Employee</h3>
+                <button type="button" class="btn-close" target="#dialog" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to delete this employee?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-toolbar" target="#dialog" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="confirm" class="btn btn-danger">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        FillDatatable();
+    });
+</script>

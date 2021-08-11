@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <style>
+        form {
+            align-content:center;
+        }
+
+        label {
+            height:30px;
+            width:204px;
+        }
+
+        input {
+            height: 30px;
+            width: 204px;
+        }
+    </style>
+    
+    <form id="submitForm" method="post" action="@Url.Action("Add","Employee")">
+
+        <p>Please fill the sections for registration.</p>
+
+        <label for="Name">Name:</label>
+        <input type="text" id="inpName" name="Name" /> <br />
+
+        <label for="Age">Age:</label>
+        <input type="text" id="inpAge" name="Age" />  <br />
+
+        <label for="Email">Email:</label> 
+        <input type="text" id="inpEmail" name="Email" /> <br />
+
+        <label for="PhoneNumber">Phone Number:</label>
+        <input type="text" id="inpPhoneNumber" name="PhoneNumber" /> <br />
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a class="btn btn-primary" type="button" href="@Url.Action("Index","Employee")">Get Employee List</a>
+
+    </form>
+
+</div>
