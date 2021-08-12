@@ -138,7 +138,12 @@ const FillDatatable = () => {
                     atr: {
                         id: 'add'
                     },
-                    action: function () {                                          
+                    action: function () {
+                        $("#addEmployee [name='Name']").val("");
+                        $("#addEmployee [name='Age']").val(null);
+                        $("#addEmployee [name='Email']").val("");
+                        $("#addEmployee [name='PhoneNumber']").val("");
+                        $("#addEmployee [name='Salary']").val(null);
                         $("#addEmployee").modal('show');
                     }
                 }
