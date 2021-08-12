@@ -1,4 +1,5 @@
 ﻿
+var table;
 
 const addEmployee = () => {
     const _data = {
@@ -14,7 +15,9 @@ const addEmployee = () => {
         data: _data,
         success: function (response) {
             $('#addEmployee').modal('hide');
-            var table = $('#EmployeeList').DataTable();
+            $('#addEmployee').on('hidden.bs.modal', function () {
+                $(this).remove();
+            })
             table.destroy();
             FillDatatable();
             toastr.success("Employee added succesfully!");
@@ -31,7 +34,6 @@ const removeEmployee = (id) => {
         url: "/employee/delete/" + id,
         method: "GET",
         success: function (response) {
-            var table = $('#EmployeeList').DataTable();
             table.destroy();
             FillDatatable();
             toastr.error("Employee deleted!");
@@ -59,7 +61,6 @@ const updateEmployee = () => {
         data: _data,
         success: function (response) {
             $('#editEmployee').modal('hide');
-            var table = $('#EmployeeList').DataTable();
             table.destroy();
             FillDatatable();
             toastr.info("Employee updated succesfully!");
@@ -85,7 +86,7 @@ const FillDatatable = () => {
         dataType: 'json',
         success: function (data) {
 
-            $('#EmployeeList').DataTable({
+                table = $('#EmployeeList').DataTable({
                 data: data,
                 dom: "Bfrtip",
                 columns: [
@@ -107,7 +108,7 @@ const FillDatatable = () => {
                         else {
                             $("#dialog").modal('show');
 
-                            $("#confirm").click(function () {
+                            $("#confirm").off('click').click(function () {
                                 $('#dialog').modal('hide');
                                 removeEmployee(_selectedId);
                             });
